@@ -1,50 +1,79 @@
 // To parse this JSON data, do
 //
-//     final post = postFromMap(jsonString);
+//     final post = postFromJson(jsonString);
 
 import 'dart:convert';
 
+List<Post> postFromJson(String str) =>
+    List<Post>.from(json.decode(str).map((x) => Post.fromJson(x)));
+
+String postToJson(List<Post> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class Post {
+  String invoiceNumber;
+  int invoiceId;
+  String invoiceDiscount;
+  int clientId;
+  double amount;
+  String clinicName;
+  String clientName;
+  dynamic address;
+  String city;
+  String mobileNo;
+  DateTime dueDate;
+  bool isRequestCompleted;
+  String status;
+  String inBalance;
+
   Post({
-    this.invoiceNumber,
-    this.amount,
-    this.clinicName,
+    required this.invoiceNumber,
+    required this.invoiceId,
+    required this.invoiceDiscount,
+    required this.clientId,
+    required this.amount,
+    required this.clinicName,
+    required this.clientName,
     this.address,
-    this.city,
+    required this.city,
+    required this.mobileNo,
     required this.dueDate,
-    this.message,
+    required this.status,
+    this.isRequestCompleted = false,
+    required this.inBalance,
   });
 
-  String? invoiceNumber;
-  String? amount;
-  String? clinicName;
-  String? address;
-  String? city;
-  DateTime dueDate;
-  String? message;
+  factory Post.fromJson(Map<String, dynamic> json) => Post(
+        invoiceNumber: json["Invoice Number"] ?? "",
+        invoiceId: json["Invoice id"] ?? 0,
+        invoiceDiscount: json["invoice_discount"] ?? "",
+        clientId: json["client id"] ?? 0,
+        amount: json["Amount"] != null ? double.parse(json["Amount"]) : 0.0,
+        clinicName: json["clinic_name"] ?? "Clinic Name",
+        clientName: json["client_name"] ?? "",
+        address: json["address"],
+        city: json["city"] ?? "",
+        mobileNo: json["mobile_no"] ?? "",
+        dueDate: json["due_date"] != null
+            ? DateTime.parse(json["due_date"])
+            : DateTime.now(),
+        status: json['Status'] ?? "",
+        inBalance: json["in_balance"] ?? "",
+      );
 
-  factory Post.fromJson(Map<String, dynamic> m) => Post.fromMap(m);
-
-  String toJson() => json.encode(toMap());
-
-  factory Post.fromMap(Map<String, dynamic> json) => Post(
-    invoiceNumber: json["invoice_number"],
-    amount: json["amount"],
-    clinicName: json["clinic_name"],
-    address: json["address"],
-    city: json["city"],
-    dueDate: DateTime.parse(json["due_date"]),
-    message: json["message"],
-  );
-
-  Map<String, dynamic> toMap() => {
-    "invoice_number": invoiceNumber,
-    "amount": amount,
-    "clinic_name": clinicName,
-    "address": address,
-    "city": city,
-    "due_date":
-    "${dueDate.year.toString().padLeft(4, '0')}-${dueDate.month.toString().padLeft(2, '0')}-${dueDate.day.toString().padLeft(2, '0')}",
-    "message": message,
-  };
+  Map<String, dynamic> toJson() => {
+        "Invoice Number": invoiceNumber,
+        "Invoice id": invoiceId,
+        "invoice_discount": invoiceDiscount,
+        "client id": clientId,
+        "Amount": amount,
+        "clinic_name": clinicName,
+        "client_name": clientName,
+        "address": address,
+        "city": city,
+        "mobile_no": mobileNo,
+        "in_balance": inBalance,
+        "due_date":
+            "${dueDate.year.toString().padLeft(4, '0')}-${dueDate.month.toString().padLeft(2, '0')}-${dueDate.day.toString().padLeft(2, '0')}",
+      };
 }

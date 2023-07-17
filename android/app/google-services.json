@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "452102071964",
+    "project_id": "ddspl-app-e849c",
+    "storage_bucket": "ddspl-app-e849c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452102071964:android:67020701818c5fe63d2f59",
+        "android_client_info": {
+          "package_name": "com.example.fresh_apk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452102071964-6660r84e7m3tcge0bdga5vl9u14b57rt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fresh_apk",
+            "certificate_hash": "7cfb391e43a379ab9eed572676f0eb92fb56f203"
+          }
+        },
+        {
+          "client_id": "452102071964-miuqvkto0sau0pe0io6b3bfaftqea5uo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdJJ3TIS7UI9i0ZHWnQ1Vo1NMzAmzRaNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452102071964-miuqvkto0sau0pe0io6b3bfaftqea5uo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
